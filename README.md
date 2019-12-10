@@ -1,0 +1,1 @@
+# SINSEKAI.github.io
