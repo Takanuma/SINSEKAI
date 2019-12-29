@@ -24,9 +24,9 @@
 
 <style>
 @media screen and (max-width: 767px) { /*ウィンドウ幅が最大767pxまでの場合に適用*/
-	a{
+    a{
         width: 100%;
-	}
+    }
 }
 
 
@@ -47,12 +47,11 @@
         display: inline-block;
         text-decoration: none;
         border: 100px;
-        height: 100%;
-        width: 5%;
+        height: 30px;
+        width: 25%;
         line-height: 30px;
         font-size:10px;
         letter-spacing: 1px;
-        
     }
 
 a:link { color: white; transition: 0.7s; }
@@ -61,7 +60,7 @@ a:hover { color: black; background-color: white; }
 </style>
 
 <script type="text/javascript">
-timerID = setInterval('clock()',500);
+timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
 
 function clock() {
 	document.getElementById("view_clock").innerHTML = getNow();
