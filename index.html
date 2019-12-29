@@ -11,11 +11,11 @@
     <span id="view_clock"></span>
     <p></p> <br />
 
-    <a href="news">news</a> <br>
-    <a href="member">member</a> <br>
-    <a href="#">?????</a> <br>
-    <a href="#">?????</a> <br>
-    <a href="#">?????</a>
+    <a href="news">news</a><br>
+    <a href="member">member</a><br>
+    <a href="#">?????</a><br>
+    <a href="#">?????</a><br>
+    <a href="#">?????</a><br>
 </body>
 
 <fotter>
@@ -24,9 +24,7 @@
 
 <style>
 @media screen and (max-width: 767px) { /*ウィンドウ幅が最大767pxまでの場合に適用*/
-a{
-background-color: #FF0000; /*赤色*/
-}
+
 }
 
 
@@ -61,7 +59,7 @@ a:hover { color: black; background-color: white; }
 </style>
 
 <script type="text/javascript">
-timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+timerID = setInterval('clock()',500);
 
 function clock() {
 	document.getElementById("view_clock").innerHTML = getNow();
