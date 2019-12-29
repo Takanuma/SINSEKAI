@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <title>新世界-SINSEKAI-</title>
 </head>
 <body>
@@ -11,10 +11,10 @@
     <span id="view_clock"></span>
     <p></p> <br />
 
-    <a href="news">news</a> <br />
-    <a href="member">member</a> <br />
-    <a href="#">?????</a> <br />
-    <a href="#">?????</a> <br />
+    <a href="news">news</a> <br>
+    <a href="member">member</a> <br>
+    <a href="#">?????</a> <br>
+    <a href="#">?????</a> <br>
     <a href="#">?????</a>
 </body>
 
@@ -23,6 +23,14 @@
 </fotter>
 
 <style>
+@media screen and (max-width: 767px) { /*ウィンドウ幅が最大767pxまでの場合に適用*/
+a{
+background-color: #FF0000; /*赤色*/
+}
+}
+
+
+
     body{
         color: white;
         background-color: black;
@@ -40,7 +48,7 @@
         text-decoration: none;
         border: 100px;
         height: 100%;
-        width: 20%;
+        width: 5%;
         line-height: 30px;
         font-size:10px;
         letter-spacing: 1px;
