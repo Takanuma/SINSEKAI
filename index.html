@@ -7,16 +7,19 @@
 </head>
 <body>
     <h1>新世界</h1>
+<div class="jump">
     <span id="view_time"></span>
     <span id="view_clock"></span>
+</div>
     <p></p> <br />
-
+<div class="jump">
     <a href="news">news</a><br>
     <a href="member">member</a><br>
     <a href="https://sinsekaishop.booth.pm/">shop</a><br>
     <a href="#">?????</a><br>
     <a href="#">?????</a><br>
-</body>
+</div>
+    </body>
 
 <class>
     <style>
@@ -38,6 +41,7 @@
                 padding-top:150px;
             }
             p{
+                padding-top: 0px;
                 padding-bottom: 50px;
             }
             a{
@@ -51,14 +55,16 @@
                 letter-spacing: 1px;
             }
         
-        a:link { color: white; transition: 0.7s; }
+        a:link { color: white; transition: 0.9s; }
         a:visited { color:white; }
         a:hover { color: black; background-color: white; }
         </style>
 </class>
 
+
+
 <script type="text/javascript">
-timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+timerID = setInterval('clock()',50); //0.05秒毎にclock()を実行
 
 function clock() {
 	document.getElementById("view_clock").innerHTML = getNow();
@@ -77,3 +83,19 @@ function getNow() {
 	return s;
 }
 </script>
+
+<style>
+body{
+  animation-name:fade-in;
+  animation-duration:2s;
+  animation-timing-function: ease-out;
+  animation-delay:0s;
+  animation-iteration-count:1;
+  animation-direction:normal;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-in {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+</style>
