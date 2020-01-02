@@ -11,13 +11,13 @@
     <span id="view_time"></span>
     <span id="view_clock"></span>
 </div>
-    <p></p> <br />
+    <p><br></p>
 <div class="jump">
     <a href="news">news</a><br>
     <a href="member">member</a><br>
     <a href="https://sinsekaishop.booth.pm/">shop</a><br>
     <a href="#">?????</a><br>
-    <a href="#">?????</a><br>
+    <a href="contact">contact</a><br>
 </div>
     </body>
 
@@ -53,8 +53,9 @@
                 line-height: 30px;
                 font-size:10px;
                 letter-spacing: 1px;
-            }
-        
+                border-radius: 1px;
+              
+            }        
         a:link { color: white; transition: 0.9s; }
         a:visited { color:white; }
         a:hover { color: black; background-color: white; }
@@ -78,8 +79,10 @@ function getNow() {
 	var hour = now.getHours();
 	var min = now.getMinutes();
 	var sec = now.getSeconds();
-
-	var s = day + "/" + mon + "/" +year + "   " + hour + ":" + min + "  JP"; 
+    
+	var s = day + "/" + mon + "/" +year + "   " + hour + ":" ;
+    if(min<10)s=s+"0";
+    s= s+ min + "  JP"; 
 	return s;
 }
 </script>
@@ -99,3 +102,4 @@ body{
   100% {opacity: 1}
 }
 </style>
+
