@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+
+<style type="text/css">
+#maxEnemy {
+width: 200px;
+height: 20px;
+background-color:black;
+position: relative;
+}
+#nowEnemy {
+width: 200px;
+height: 20px;
+background:linear-gradient(#F89174, #FFC778);
+text-align: right;
+position: absolute;
+left: 0px;
+top: 0px;
+}
+#maxMe {
+width: 200px;
+height: 20px;
+background-color:black;
+position: relative;
+}
+#nowMe {
+width: 200px;
+height: 20px;
+background:linear-gradient(green,gray);
+text-align: right;
+position: absolute;
+left: 0px;
+top: 0px;
+}
+#txt {
+width: 300px;
+}
+#txt2{
+  width:300px;
+}
+#btn1 {
+display: block;
+}
+#btn2 {
+display: none;
+}
+#btn3 {
+display: block;
+}
+</style>
+
+<script type="text/javascript">
+
+// ★初期化
+function load() {
+maxhpE = Math.floor(Math.random() * 100)+100;
+nowhpE = maxhpE;
+maxhpMe = 100;
+nowhpMe = maxhpMe;
+
+N = document.getElementById("nowEnemy");
+NMe = document.getElementById("nowMe");
+T = document.getElementById("txt");
+T2 = document.getElementById("txt2");
+B1 = document.getElementById("btn1");
+B2 = document.getElementById("btn2");
+
+power=1;
+N.innerHTML =nowhpE + "/" + maxhpE;
+NMe.innerHTML = nowhpMe+"/"+maxhpMe;
+}
+
+// ★ゲージ減少
+function attack() {
+random = Math.floor(Math.random() * 10)+5;
+random *= power
+nowhpE = nowhpE - random;
+if (nowhpE > 0) {
+if (random == 0) {
+str = "太田ジョンソンに攻撃をかわされた";
+} else {
+str = "太田ジョンソンに" + random + "のダメージを与えた";
+}
+} else {
+nowhpE = 0;
+str = "太田ジョンソンは力尽きた";
+B1.style.display = "none";
+B2.style.display = "block";
+}
+T.value = str;
+N.innerHTML =nowhpE + "/" + maxhpE;
+N.style.width = 200 / maxhpE * nowhpE + "px";
+power=1;
+
+//ＴＥＫＩＮＯｋｏｕＫＩＧＥ
+random = Math.floor(Math.random() * 30);
+nowhpMe-=random;
+if (nowhpMe > 0) {
+if (random == 0) {
+str = "あなたは攻撃をかわした";
+} else {
+str = "あなたは" + random + "のダメージを与えられた";
+}
+} else {
+nowhpMe = 0;
+str = "あなたはは力尽きた";
+B1.style.display = "none";
+B2.style.display = "block";
+}
+T2.value=str;
+NMe.innerHTML = nowhpMe + "/" + maxhpMe;
+NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
+}
+
+//★ためる
+function tameru(){
+  power+=1;
+  T.value ="力をためた！";
+}
+// ★リロード
+function reload() {
+maxhpE = Math.floor(Math.random() * 100)+100;
+nowhpE = maxhpE;
+maxhpMe=100;
+nowhpMe =maxhpMe;
+B1.style.display = "block";
+B2.style.display = "none";
+T.value = "新たな太田ジョンソンを見つけた";
+N.innerHTML = nowhpE + "/" + maxhpE;
+N.style.width = 200 / maxhpE * nowhpE + "px";
+NMe.innerHTML = nowhpMe + "/" + maxhpMe;
+NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
+}
+
+</script>
+</head>
+
+<body onload="load()">
+  <div id="maxEnemy">
+    <div id="nowEnemy">
+    </div>
+  </div>
+
+  <div id="maxMe">
+    <div id="nowMe">    
+    </div>
+  </div>
+
+  <input id="btn1" type="button" onclick="attack()" value="斬撃">
+  <input id="btn2" type="button" onclick="reload()" value="葬る">
+  <input id="btn1" type="button" onclick="tameru()" value="ためる">
+  <input id="txt" type="text" value="太田ジョンソンを見つけた">
+  <input id="txt2" type="text" value="ＩＥＥ">
+</body>
