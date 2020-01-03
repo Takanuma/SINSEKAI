@@ -80,9 +80,15 @@ function getNow() {
 	var min = now.getMinutes();
 	var sec = now.getSeconds();
     
-	var s = day + "/" + mon + "/" +year + "   " + hour + ":" ;
+	var s ="";
+    if(day<10)s=s+"0";
+    s= s + day + "/";
+    if(mon<10)s=s+"0";
+    s= s + mon + "/" +year + "   " ;
+    if(hour<10)s=s+"0";
+    s= s + hour + ":" ;
     if(min<10)s=s+"0";
-    s= s+ min + "  JP"; 
+    s= s + min + "  JP"; 
 	return s;
 }
 </script>
