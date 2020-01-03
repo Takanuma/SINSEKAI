@@ -69,6 +69,10 @@ power=1;
 N.innerHTML =nowhpE + "/" + maxhpE;
 NMe.innerHTML = nowhpMe+"/"+maxhpMe;
 
+if(!localStorage.getItem('mydata')) {
+          mydata = 0;
+        }
+
 mydata = localStorage.getItem('mydata');
 document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
 
@@ -141,6 +145,14 @@ mydata=parseInt(mydataOld);
 mydata +=1;
 localStorage.setItem('mydata', mydata);
 document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
+
+}
+
+// 保存
+function save() {
+mydata=0;
+localStorage.setItem('mydata', mydata);
+document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
 }
 
 </script>
@@ -165,4 +177,5 @@ document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死�
   <input id="txt" type="text" value="太田ジョンソンを見つけた">
   <input id="txt2" type="text" value="あなたは太田ジョンソンに見つけられた">
   <div id="mydata_out"></div>
+  <input type="button" value="死体数初期化" onclick="save();"/>
 </body>
