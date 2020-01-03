@@ -68,6 +68,10 @@ B2 = document.getElementById("btn2");
 power=1;
 N.innerHTML =nowhpE + "/" + maxhpE;
 NMe.innerHTML = nowhpMe+"/"+maxhpMe;
+
+mydata = localStorage.getItem('mydata');
+document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
+
 }
 
 // ★ゲージ減少
@@ -126,30 +130,39 @@ nowhpMe =maxhpMe;
 B1.style.display = "block";
 B2.style.display = "none";
 T.value = "新たな太田ジョンソンを見つけた";
-T2.value = "あなたは太田ジョンソンに見つめられた";
+T2.value = "あなたは太田ジョンソンに見つけられた";
 N.innerHTML = nowhpE + "/" + maxhpE;
 N.style.width = 200 / maxhpE * nowhpE + "px";
 NMe.innerHTML = nowhpMe + "/" + maxhpMe;
 NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
+
+mydataOld = localStorage.getItem('mydata');
+mydata=parseInt(mydataOld);
+mydata +=1;
+localStorage.setItem('mydata', mydata);
+document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
 }
 
 </script>
 </head>
 
 <body onload="load()">
+  <p>敵のHP</p>
   <div id="maxEnemy">
     <div id="nowEnemy">
     </div>
   </div>
-
+<p>あなたのHP</p>
+<input id="level" type="number" value="1">
   <div id="maxMe">
     <div id="nowMe">    
     </div>
   </div>
-
+  <br>
   <input id="btn1" type="button" onclick="attack()" value="斬撃">
   <input id="btn2" type="button" onclick="reload()" value="葬る">
   <input id="btn1" type="button" onclick="tameru()" value="ためる">
   <input id="txt" type="text" value="太田ジョンソンを見つけた">
   <input id="txt2" type="text" value="あなたは太田ジョンソンに見つけられた">
+  <div id="mydata_out"></div>
 </body>
