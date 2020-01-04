@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-
+<title>勇者は魔王を倒すため旅に出る</title>
 <style type="text/css">
 #maxEnemy {
 width: 200px;
@@ -53,11 +53,26 @@ display: block;
 
 // ★初期化
 function load() {
-maxhpE = Math.floor(Math.random() * 100)+100;
+if(!localStorage.getItem('mydata')) {
+mydata = 0;
+localStorage.setItem('mydata', mydata);
+}
+//死体数処理
+mydata = localStorage.getItem('mydata');
+document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
+//レベル処理
+if(!localStorage.getItem('mylevel')) {
+level = 1;
+localStorage.setItem('mylevel', level);
+}
+level=localStorage.getItem('mylevel');
+document.getElementById("level").innerHTML ="レベル" + level;
+//HP処理
+maxhpE = Math.floor(Math.random() * 100)+100+(level*5);
 nowhpE = maxhpE;
-maxhpMe = 100;
-nowhpMe = maxhpMe;
-
+maxhpMe=100+(level*10);
+nowhpMe =maxhpMe;
+//表示処理
 N = document.getElementById("nowEnemy");
 NMe = document.getElementById("nowMe");
 T = document.getElementById("txt");
@@ -66,41 +81,45 @@ B1 = document.getElementById("btn1");
 B2 = document.getElementById("btn2");
 
 power=1;
+MAO=0;
 N.innerHTML =nowhpE + "/" + maxhpE;
-NMe.innerHTML = nowhpMe+"/"+maxhpMe;
+NMe.innerHTML = nowhpMe + "/" + maxhpMe;
 
-if(!localStorage.getItem('mydata')) {
-          mydata = 0;
-        }
-
-mydata = localStorage.getItem('mydata');
-document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
+yourname.innerHTML = "ゆうしゃ";
+nameE.innerHTML ="太田ジョンソン";
 
 }
 
 // ★ゲージ減少
 function attack() {
-random = Math.floor(Math.random() * 10)+5;
-random *= power
-nowhpE = nowhpE - random;
+random = Math.floor(Math.random() * 10);
+random *=power;
+damage=Number(level)+5+random;
+nowhpE-=damage;
+enemyname="太田ジョンソン";
+if(MAO==1)enemyname="魔王";
+nameE.innerHTML=enemyname;
 if (nowhpE > 0) {
-if (random == 0) {
-str = "太田ジョンソンに攻撃をかわされた";
-} else {
-str = "太田ジョンソンに" + random + "のダメージを与えた";
+  if (random == 0) {
+    str = enemyname +"に攻撃をかわされた";
+  } else {
+    str = enemyname +"に" + damage + "のダメージを与えた"+level;
+  }
 }
-} else {
-nowhpE = 0;
-str = "太田ジョンソンは力尽きた";
-B1.style.display = "none";
-B2.style.display = "block";
+
+if(nowhpE<=0){
+  nowhpE = 0;
+  str = "太田ジョンソンは力尽きた";
+  if(MAO==1&&nowhpE<=0)str="魔王は死に、世界に平和が訪れた。";
+  B1.style.display = "none";
+  B2.style.display = "block";
 }
 T.value = str;
 N.innerHTML =nowhpE + "/" + maxhpE;
 N.style.width = 200 / maxhpE * nowhpE + "px";
-power=1;
 
 //ＴＥＫＩＮＯｋｏｕＫＩＧＥ
+if(MAO==0){
 random = Math.floor(Math.random() * 30);
 nowhpMe-=random;
 if (nowhpMe > 0) {
@@ -112,6 +131,9 @@ str = "あなたは" + random + "のダメージを与えられた";
 } else {
 nowhpMe = 0;
 str = "あなたはは力尽きた";
+if(nowhpE<=0){
+  str="あなたは勝利した";
+}
 B1.style.display = "none";
 B2.style.display = "block";
 }
@@ -119,36 +141,88 @@ T2.value=str;
 NMe.innerHTML = nowhpMe + "/" + maxhpMe;
 NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
 }
+//MAO
+if(MAO==1){
+  random = Math.floor(Math.random() * 30);
+  random+=10;
+  random*=power;
+nowhpMe-=random;
+if (nowhpMe > 0) {
+if (random == 0) {
+str = "あなたは攻撃をかわした";
+} else {
+str = "あなたは" + random + "のダメージを与えられた";
+}
+} else {
+nowhpMe = 0;
+str = "あなたはは力尽きた";
+if(nowhpE<=0)str="あなたの死と共に...";
+B1.style.display = "none";
+B2.style.display = "block";
+}
+T2.value=str;
+NMe.innerHTML = nowhpMe + "/" + maxhpMe;
+NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
+}
+power=1;
+
+
+count=1;
+}
 
 //★ためる
 function tameru(){
   power+=1;
-  T.value ="力をためた！";
+  T.value ="あなたは力をためた！";
+  if(MAO==1){
+  T2.value="魔王「ならば私もそうさせていただこう」";
+  }
 }
+
 // ★リロード
 function reload() {
-maxhpE = Math.floor(Math.random() * 100)+100;
-nowhpE = maxhpE;
-maxhpMe=100;
-nowhpMe =maxhpMe;
-B1.style.display = "block";
-B2.style.display = "none";
 T.value = "新たな太田ジョンソンを見つけた";
 T2.value = "あなたは太田ジョンソンに見つけられた";
-N.innerHTML = nowhpE + "/" + maxhpE;
-N.style.width = 200 / maxhpE * nowhpE + "px";
-NMe.innerHTML = nowhpMe + "/" + maxhpMe;
-NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
-
+if(nowhpE<=0){
+  level=localStorage.getItem('mylevel');
+  level++; 
+  localStorage.setItem('mylevel',level);
+  document.getElementById("level").innerHTML = "レベル"+level;
+}
+//HP回復
+maxhpE = Math.floor(Math.random() * 100)+100+(level*5);
+nowhpE = maxhpE;
+maxhpMe=100+(level*10);
+nowhpMe =maxhpMe;
+//死体数カウント
 mydataOld = localStorage.getItem('mydata');
 mydata=parseInt(mydataOld);
 mydata +=1;
 localStorage.setItem('mydata', mydata);
 document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死亡";
-
+//魔王出現フラグ
+if(MAO==1){
+MAO=0;
+}else if(level>=30&&maxhpE>180){
+T.value = "魔王を見つけた";
+T2.value = "あなたは恐怖し、慄く";
+maxhpE = 1000
+nowhpE = maxhpE;
+MAO=1;
+}
+//その他フラグ、表示回復
+B1.style.display = "block";
+B2.style.display = "none";
+N.innerHTML = nowhpE + "/" + maxhpE;
+N.style.width = 200 / maxhpE * nowhpE + "px";
+NMe.innerHTML = nowhpMe + "/" + maxhpMe;
+NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
+enemyname="太田ジョンソン";
+if(MAO==1)enemyname="魔王";
+nameE.innerHTML=enemyname;
 }
 
-// 保存
+//★死体数初期化
 function save() {
 mydata=0;
 localStorage.setItem('mydata', mydata);
@@ -159,13 +233,14 @@ document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死�
 </head>
 
 <body onload="load()">
-  <p>敵のHP</p>
+  <div id="nameE"></div>
   <div id="maxEnemy">
     <div id="nowEnemy">
     </div>
   </div>
-<p>あなたのHP</p>
-<input id="level" type="number" value="1">
+  <br>
+<div id="yourname"></div>
+<div id="level"></div>
   <div id="maxMe">
     <div id="nowMe">    
     </div>
@@ -173,7 +248,7 @@ document.getElementById("mydata_out").innerHTML ="合計" + mydata + "人が死�
   <br>
   <input id="btn1" type="button" onclick="attack()" value="斬撃">
   <input id="btn2" type="button" onclick="reload()" value="葬る">
-  <input id="btn1" type="button" onclick="tameru()" value="ためる">
+  <input id="btn3" type="button" onclick="tameru()" value="ためる">
   <input id="txt" type="text" value="太田ジョンソンを見つけた">
   <input id="txt2" type="text" value="あなたは太田ジョンソンに見つけられた">
   <div id="mydata_out"></div>
