@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <head>
 <title>勇者は魔王を倒すため旅に出る</title>
@@ -93,8 +94,8 @@ nameE.innerHTML ="太田ジョンソン";
 // ★ゲージ減少
 function attack() {
 random = Math.floor(Math.random() * 10);
-random *=power;
 damage=Number(level)+5+random;
+damage*=power;
 nowhpE-=damage;
 enemyname="太田ジョンソン";
 if(MAO==1)enemyname="魔王";
