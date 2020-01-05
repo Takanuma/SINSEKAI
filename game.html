@@ -102,6 +102,7 @@ if(enemyKind==0)enemyname="スライム";
 if(MAO==1)enemyname="魔王";
 if(enemyKind==1)enemyname="オーク";
 if(enemyKind==2)enemyname="太田ジョンソン";
+if(MAO==2)enemyname="真魔王";
 
 nameE.innerHTML=enemyname;
 if (nowhpE > 0) {
@@ -116,6 +117,7 @@ if(nowhpE<=0){
   nowhpE = 0;
   str = enemyname+"は力尽きた";
   if(MAO==1&&nowhpE<=0)str="魔王は死に、世界に平和が訪れた。";
+  if(MAO==2)str="真魔王は死に、世界には光が戻った。"
   B1.style.display = "none";
   B2.style.display = "block";
 }
@@ -148,10 +150,11 @@ NMe.innerHTML = nowhpMe + "/" + maxhpMe;
 NMe.style.width = 200 / maxhpMe * nowhpMe + "px";
 }
 //MAO
-if(MAO==1){
+if(MAO>0){
   random = Math.floor(Math.random() * 30);
   random+=15;
   random*=power;
+  if(MAO==2)random+=100;
 nowhpMe-=random;
 if (nowhpMe > 0) {
 if (random == 0) {
@@ -178,8 +181,8 @@ power=1;
 function tameru(){
   power+=1;
   T.value ="あなたは力をためた！";
-  if(MAO==1){
-  T2.value="魔王「ならば私もそうさせていただこう」";
+  if(MAO==1||MAO==2){
+  T2.value= enemyname+"「ならば私もそうさせていただこう」";
   }
 }
 
@@ -215,16 +218,22 @@ if(random>14){
 }
 }
 //魔王出現フラグ
-if(MAO==1){
+if(MAO>0){
 MAO=0;
 }else if(level>=30&&random>24){
 maxhpE = 1000
 nowhpE = maxhpE;
 MAO=1;
 enemyKind=0;
+}else if(level>100){
+  MAO=2;
+  maxhpE=10000
+  nowhpE=maxhpE;
+  enemyKind=0;
 }
 enemyname="スライム";
 if(MAO==1)enemyname="魔王";
+if(MAO==2)enemyname="真魔王";
 if(enemyKind==1)enemyname="オーク"
 if(enemyKind==2)enemyname="太田ジョンソン"
 nameE.innerHTML=enemyname;
@@ -233,6 +242,7 @@ nameE.innerHTML=enemyname;
 T.value = enemyname+"を見つけた";
 T2.value = "あなたは"+enemyname+"に見つけられた";
 if(MAO==1)T2.value = "あなたは恐怖し、慄く";
+if(MAO==2)T2.value = "あなたは絶望する";
 if(enemyKind==2)T2.value="バンボンほにゃほにゃ";
 B1.style.display = "block";
 B2.style.display = "none";
