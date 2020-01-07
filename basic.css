@@ -13,10 +13,6 @@ body{
 h1{
     padding-top:70px;
 }
-p{
-    padding-top: 0px;
-    padding-bottom: 50px;
-}
 a{
     display: inline-block;
     text-decoration: none;
