@@ -1,112 +1,26 @@
 <!DOCTYPE html>
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
+    <title>新世界-SINSEKAI-</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="back.css">
+    <link rel="stylesheet" type="text/css" href="basic.css">
+    <script type="text/javascript" src="timer.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="basic.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <title>新世界-SINSEKAI-</title>
 </head>
 <body>
+<div class="jump" id="wrapper">
     <h1>新世界</h1>
-<div class="jump">
     <span id="view_time"></span>
     <span id="view_clock"></span>
-</div>
     <p><br></p>
-<div class="jump">
-    <a href="news">news</a><br>
-    <a href="member">member</a><br>
+    <a href="news.html">news</a><br>
+    <a href="member.html">member</a><br>
     <a href="https://sinsekaishop.booth.pm/">shop</a><br>
-    <a href="game">game</a><br>
-    <a href="#">?????</a><br>
+    <a href="game.html">game</a><br>
+    <a href="#">?????</a><br><br><br><br><br><br>
 </div>
-    </body>
-
-<class>
-    <style>
-        @media screen and (max-width: 767px) { /*ウィンドウ幅が最大767pxまでの場合に適用*/
-            a{
-                width: 100%;
-            }
-        }
-        
-        
-        
-            body{
-                color: white;
-                background-color: black;
-                font-family: 'Noto Sans JP', sans-serif;
-                text-align: center;
-            }
-            h1{
-                padding-top:150px;
-            }
-            p{
-                padding-top: 0px;
-                padding-bottom: 50px;
-            }
-            a{
-                display: inline-block;
-                text-decoration: none;
-                border: 100px;
-                height: 30px;
-                width: 25%;
-                line-height: 30px;
-                font-size:10px;
-                letter-spacing: 1px;
-                border-radius: 1px;
-              
-            }        
-        a:link { color: white; transition: 0.9s; }
-        a:visited { color:white; }
-        a:hover { color: black; background-color: white; }
-        </style>
-</class>
-
-
-
-<script type="text/javascript">
-timerID = setInterval('clock()',50); //0.05秒毎にclock()を実行
-
-function clock() {
-	document.getElementById("view_clock").innerHTML = getNow();
-}
-
-function getNow() {
-	var now = new Date();
-    var year = now.getFullYear();
-	var mon = now.getMonth()+1;
-	var day = now.getDate();
-	var hour = now.getHours();
-	var min = now.getMinutes();
-	var sec = now.getSeconds();
-    
-	var s ="";
-    if(day<10)s=s+"0";
-    s= s + day + "/";
-    if(mon<10)s=s+"0";
-    s= s + mon + "/" +year + "   " ;
-    if(hour<10)s=s+"0";
-    s= s + hour + ":" ;
-    if(min<10)s=s+"0";
-    s= s + min + "  JP"; 
-	return s;
-}
-</script>
-
-<style>
-body{
-  animation-name:fade-in;
-  animation-duration:2s;
-  animation-timing-function: ease-out;
-  animation-delay:0s;
-  animation-iteration-count:1;
-  animation-direction:normal;
-  animation-fill-mode: forwards;
-}
-@keyframes fade-in {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-</style>
-
+</body>
