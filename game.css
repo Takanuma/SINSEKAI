@@ -1,0 +1,45 @@
+#maxEnemy {
+width: 200px;
+height: 20px;
+background-color:black;
+position: relative;
+}
+#nowEnemy {
+width: 200px;
+height: 20px;
+background:linear-gradient(#F89174, #FFC778);
+text-align: right;
+position: absolute;
+left: 0px;
+top: 0px;
+}
+#maxMe {
+width: 200px;
+height: 20px;
+background-color:black;
+position: relative;
+}
+#nowMe {
+width: 200px;
+height: 20px;
+background:linear-gradient(green,gray);
+text-align: right;
+position: absolute;
+left: 0px;
+top: 0px;
+}
+#txt {
+width: 300px;
+}
+#txt2{
+  width:300px;
+}
+#btn1 {
+display: block;
+}
+#btn2 {
+display: none;
+}
+#btn3 {
+display: block;
+}
