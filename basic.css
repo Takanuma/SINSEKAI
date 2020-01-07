@@ -25,7 +25,7 @@ a{
     border-radius: 1px;
     
 }        
-a:link { color: white; transition: 0.9s; }
+a:link { color: white; transition: 0.5s; }
 a:visited { color:white; }
 a:hover { color: black; background-color: white; }
 /*画面演出*/
