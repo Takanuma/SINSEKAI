@@ -7,10 +7,10 @@ $(function(){
         // URLが空ではない場合
         if (url != '') {
             // フェードアウトしてから、取得したURLにリンクする
-            $('#wrapper').fadeOut(1000);
+            $('#wrapper').fadeOut(500);
             setTimeout(function(){
                 location.href = url;
-            }, 1000);
+            }, 500);
         }
         return false;
     
