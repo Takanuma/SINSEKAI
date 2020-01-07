@@ -31,7 +31,7 @@ a:hover { color: black; background-color: white; }
 /*画面演出*/
 body{
     animation-name:fade-in;
-    animation-duration:2s;
+    animation-duration:s;
     animation-timing-function: ease-out;
     animation-delay:0s;
     animation-iteration-count:1;
