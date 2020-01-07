@@ -3,6 +3,7 @@
         width: 100%;
     }
 }
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
 body{
     color: white;
     background-color: black;
