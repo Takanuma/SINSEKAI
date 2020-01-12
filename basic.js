@@ -8,7 +8,7 @@ $(function(){
         if (url != '') {
             // フェードアウトしてから、取得したURLにリンクする
             $('#wrapper').fadeOut(500);
-            $('#wrapper').fadeOut(1000);
+            $('#wrapper').fadeIn(1000);
             setTimeout(function(){
                 location.href = url;
             }, 500);
